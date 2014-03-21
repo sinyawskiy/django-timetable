@@ -1,0 +1,89 @@
+<style>
+    .schedule a{
+        font-size: 10px;
+    }
+
+    .schedule div.controls a{
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    .schedule td{
+        vertical-align: middle;
+        text-align: center;
+        padding:2px;
+    }
+
+    .schedule div.marker{
+        width:14px;
+        height:20px;
+    }
+
+    .schedule div.marker label{
+        position:relative;
+        display: inline;
+        padding: 0;
+    }
+
+    .schedule label{
+        width:7px;
+        height:20px;
+    }
+
+    .schedule input[type=checkbox]{
+        display:None;
+    }
+
+    .schedule input[type=checkbox]:checked + label{
+        background-color: darkblue;
+    }
+
+    .schedule input[type=checkbox] + label{
+        cursor: pointer;
+        content: '';
+        background-color: darkgray;
+    }
+    label[for=id_schedule]{
+        float:none;
+        width:100%;
+        position:relative;
+        clear: both;
+    }
+    .schedule .controls{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .schedule .controls a:last-child{
+        margin-left: 10px;
+    }
+    .schedule_header td{
+        text-align:left;
+    }
+
+</style>
+<div class="schedule">
+<div class="controls">
+    <a href="javascript:void(0);" class="schedule_check_all" title="Отметить все">Отметить все</a>
+    <a href="javascript:void(0);" class="schedule_uncheck_all" title="Снять все отметки">Снять все отметки</a>
+    <a href="javascript:void(0);" class="schedule_check_standart" title="Стандартное время">Стандарт</a>
+    <a href="javascript:void(0);" class="schedule_check_reverse" title="Отразить отметки">Отразить отметки</a>
+</div>
+<table>
+    <tr class="schedule_header">
+        <td>Время<br>Дни</td>
+        {% for time in time_list_header %}
+            <td><a href="javascript:void(0);" title="Отметить столбец" class="schedule_header_time" data-part="{{ time.data_part }}" data-time="{{ time.data_time }}">{{ time.time|safe }}</a></td>
+        {% endfor %}
+    </tr>
+    {% for day in days %}
+    <tr>
+        <td><a href="javascript:void(0);" class="schedule_header_day" data-day="{{ day.data_day }}" title="Отметить ряд">{{ day.name }}</a></td>
+        {% for time in day.time_list %}
+        {% cycle '<td><div class="marker">' '' %}
+            <input data-day="{{ day.data_day }}" data-time="{{ time.data_time }}" type="checkbox" id="id-{{ time.name }}" name="{{ time.name }}" {% if time.is_checked %}checked="checked"{% endif %}><label for="id-{{ time.name }}" title="{{ day.name }} {{ time.time }}"></label>
+        {% cycle '' '</div></td>' %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
