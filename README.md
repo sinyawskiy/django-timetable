@@ -46,6 +46,7 @@ class InfoSchedule(ScheduleModel):
 from django.contrib import admin
 from models import InfoSchedule
 from forms import InfoScheduleAdminForm
+from django.conf import settings
 
 
 class InfoScheduleAdmin(admin.ModelAdmin):
