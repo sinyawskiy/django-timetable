@@ -13,7 +13,7 @@ Widget расписание в django-admin
 
 В Django admin табличка и control выглядит так:
 
-![Example](https://github.com/sinyawskiy/django-timetable/blob/master/img/example.png)
+![Example](https://raw.githubusercontent.com/sinyawskiy/django-timetable/master/img/example.png)
 
 
 Определение модели
