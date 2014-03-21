@@ -12,7 +12,8 @@ Widget расписание в django-admin
 пон., вт., ср., чет., пят.|7:45 - 19:45	|13:00 - 14:00
 
 В Django admin табличка и control выглядит так:
-![Example](sinyawskiy.github.com/repository/img/example.png)
+
+![Example](https://github.com/sinyawskiy/django-timetable/blob/master/img/example.png)
 
 
 Определение модели
